@@ -1,0 +1,23 @@
+{
+  "name": "titlename",
+  "version": "1.0.0",
+  "description": "Landing page",
+  "main": "script.js",
+  "scripts": {
+    "compile:sass": "node-sass scss/main.scss css/style.css -w",
+    "git:pull": "git pull",
+    "git:add": "git add .",
+    "git:commit": "git commit -m \"v5\" ",
+    "git:push": "git push",
+    "build:js": "npm-run-all git:pull git:add git:commit git:push"
+  },
+  "author": "Harry",
+  "license": "ISC",
+  "devDependencies": {
+    "autoprefixer": "^10.4.4",
+    "concat": "^1.0.3",
+    "node-sass": "^7.0.1",
+    "npm-run-all": "^4.1.5",
+    "postcss-cli": "^9.1.0"
+  }
+}

@@ -1,0 +1,97 @@
+/*********************************************
+**********************************************
+GENERAL CSS, UNIVERSAL AND COMMON CSS 
+*********************************************
+**********************************************/
+
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+html {
+  /* font-size: 10px; */
+  /* 10px / 16px = 0.625 = 62.5% */
+  /* Percentage of user's browser font-size setting */
+  font-size: 62.5%;
+
+  @include respond(tab-land) {
+    font-size: 56.25%; //1rem==9px
+  }
+  @include respond(tab-port) {
+    font-size: 50%; //1rem=8px
+  }
+  @include respond(phone) {
+    font-size: 30%; //1rem
+  }
+  @include respond(big-desktop) {
+    font-size: 75%; //1rem==12px
+  }
+}
+body {
+  box-sizing: border-box;
+  min-height: 100vh;
+  text-rendering: optimizeSpeed;
+  line-height: 1.5;
+
+  font-family: "Manrope", sans-serif;
+  color: var(--color-light--2);
+  font-weight: 400;
+
+  overscroll-behavior-y: none;
+
+  background-color: #fff;
+}
+
+/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+ul[role="list"],
+ol[role="list"] {
+  list-style: none;
+}
+
+/* Set core root defaults */
+html:focus-within {
+  scroll-behavior: smooth;
+}
+
+/* A elements that don't have a class get default styles */
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+}
+
+/* Make images easier to work with */
+img,
+picture {
+  max-width: 100%;
+  display: block;
+}
+
+/* Inherit fonts for inputs and buttons */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
+@media (prefers-reduced-motion: reduce) {
+  html:focus-within {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+// ::selection {
+//   background-color: $color-primary-dark;
+//   color: $color-white;
+// }
