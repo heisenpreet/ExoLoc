@@ -1,8 +1,8 @@
 .sidebar {
   grid-row: 2/20;
   grid-column: 2/8;
-  background-color: var(--color-dark--1);
-  opacity: 45%;
+  background-color: var(--color-dark--2);
+  opacity: 60%;
   transition: opacity 1s;
   transition-timing-function: ease;
   &:hover {

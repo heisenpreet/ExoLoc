@@ -1,0 +1,15 @@
+.workout__form {
+  transition: all 0.5s;
+  transition-timing-function: ease;
+}
+
+.hidden {
+  display: none !important;
+  visibility: hidden !important;
+  width: 0 !important;
+  height: 0 !important;
+  margin: 0 !important;
+}
+.margin-hide {
+  margin: 0;
+}

@@ -1,0 +1,56 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  justify-items: center;
+
+  background-color: var(--color-dark--1);
+  z-index: 20;
+  opacity: 100%;
+  padding: 3rem;
+
+  height: 100%;
+  width: 100%;
+  border-radius: 1.5rem;
+
+  &__row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+  }
+  &__label {
+    font-size: 1.5rem;
+    font-weight: 600;
+  }
+
+  &-input {
+    width: 60%;
+    height: 3rem;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+
+    font-family: inherit;
+    font-size: 1.5rem;
+    background-color: var(--color-light--3);
+    border: none;
+  }
+
+  &__button {
+    align-self: flex-end;
+    font-family: inherit;
+    font-size: 1.5rem;
+    font-weight: 600;
+    padding: 0.8rem 1.8rem;
+    border-radius: 0.5rem;
+    border: none;
+    margin-top: 1rem;
+    background-color: var(--color-light--3);
+    transition: all 800ms;
+    transition-timing-function: ease;
+    &:hover {
+      background-color: var(--color-light--2);
+    }
+  }
+}

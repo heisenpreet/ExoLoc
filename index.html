@@ -43,11 +43,67 @@
         alt="logo"
         class="sidebar__logo"
       />
-      <ul class="list">
-        <li class="list__item">
-          <h1>here ia m the list</h1>
-        </li>
-      </ul>
+      <section class="workout__list hidden">
+        <ul class="list">
+          <li class="list__item">
+            <h1>here ia m the list</h1>
+          </li>
+        </ul>
+      </section>
+
+      <section class="workout__form hidden">
+        <form class="form">
+          <div class="form__row">
+            <label class="form__label" for="name">WorkOut</label>
+            <select class="form__select form-input" id="name">
+              <option value="Running">Running</option>
+              <option value="Cycling">Cycling</option>
+            </select>
+          </div>
+          <div class="form__row">
+            <label class="form__label" for="distance">Distance</label>
+            <input
+              type="number"
+              id="distance"
+              class="form-input form__distance"
+              placeholder="km"
+            />
+          </div>
+          <div class="form__row">
+            <label class="form__label" for="duration">duration</label>
+            <input
+              type="number"
+              id="duration"
+              class="form-input form__duration"
+              placeholder="min"
+            />
+          </div>
+          <div class="form__row cadence">
+            <label class="form__label" for="Cadence">Cadence</label>
+            <input
+              type="number"
+              id="Cadence"
+              class="form-input form__cadence"
+              placeholder="step/min"
+            />
+          </div>
+          <div class="form__row elve hidden">
+            <label class="form__label" for="elve">Elve Gain</label>
+            <input
+              type="number"
+              id="elve"
+              class="form-input form__elve"
+              placeholder="meters"
+            />
+          </div>
+          <div class="form__row">
+            <label class="form__label" for="label">Label</label>
+            <input type="text" id="label" class="form-input form__label" />
+          </div>
+
+          <button class="form__button">Submit</button>
+        </form>
+      </section>
       <footer class="footer">
         <p>
           © Copyright by
