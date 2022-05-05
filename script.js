@@ -7,6 +7,47 @@ const formSubmit = document.querySelector(".form__button");
 const formDistance = document.querySelector(".form__distance");
 const workoutType = document.querySelector(".form__select");
 
+//classes for data
+class WorkOut {
+  date = new Date();
+  id = (Date.now() + "").slice(-10);
+
+  constructor(coords, distance, duration) {
+    this.coords = coords;
+    this.distance = distance;
+    this.duration = duration;
+  }
+}
+
+class Running extends WorkOut {
+  constructor(coords, distance, duration, cadence) {
+    super(coords, distance, duration);
+    this.cadence = cadence;
+    this.calcPace();
+  }
+
+  calcPace() {
+    this.pace = this.duration / this.distance;
+    return this.pace;
+  }
+}
+
+class Cycling extends WorkOut {
+  constructor(coords, distance, duration, elveGain) {
+    super(coords, distance, duration);
+    this.elveGain = elveGain;
+    this.calcSpeed();
+  }
+
+  calcSpeed() {
+    this.speed = this.distance / (this.duration / 60);
+    return this.speed;
+  }
+}
+
+//////////////////////////////////
+///////////////////////////////
+//Application articture
 class App {
   #map;
   #mapEvent; //private instance class fields
