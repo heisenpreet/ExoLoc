@@ -71,6 +71,8 @@ class App {
 
     //changing credence to elve
     workoutType.addEventListener("change", this._toogleElevationFields);
+
+    workoutList.addEventListener("click", this._movetoPopup.bind(this));
   }
 
   _getPosition() {
@@ -221,7 +223,9 @@ class App {
   }
 
   _renderWorkoutList(workout) {
-    const html = ` <li class="workout__list-item workout__${workout.type}">
+    const html = ` <li class="workout__list-item workout__${
+      workout.type
+    }" data-id="${workout.id}">
       <h1 class="workout__label">${workout.label}</h1>
       <div class="workout__details">
         <p class="workout__info">
@@ -261,6 +265,20 @@ class App {
       </div>
     </li>`;
     workoutListItem.insertAdjacentHTML("afterbegin", html);
+  }
+
+  _movetoPopup(e) {
+    const workoutEL = e.target.closest(".workout__list-item");
+
+    if (!workoutEL) return;
+    const workoutId = this.#AllWorkouts.find(
+      (el) => el.id === workoutEL.dataset.id
+    );
+
+    this.#map.setView(workoutId.coords, 13, {
+      animate: true,
+      pan: { duration: 1 },
+    });
   }
 }
 
