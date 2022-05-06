@@ -5,6 +5,10 @@ const sidebar = document.querySelector(".sidebar");
 const form = document.querySelector(".workout__form");
 const formSubmit = document.querySelector(".form__button");
 const formDistance = document.querySelector(".form__distance");
+const formDuration = document.querySelector(".form__duration");
+const formCadence = document.querySelector(".form__cadence");
+const formElve = document.querySelector(".form__elve");
+const formLabel = document.querySelector(".form__label");
 const workoutType = document.querySelector(".form__select");
 
 //classes for data
@@ -51,6 +55,7 @@ class Cycling extends WorkOut {
 class App {
   #map;
   #mapEvent; //private instance class fields
+  #AllWorkouts = [];
 
   constructor() {
     this._getPosition();
@@ -115,12 +120,51 @@ class App {
   }
 
   _newWorkout(e) {
+    /**
+     * Get Data from the form
+     * Check if the data is valid or not
+     * IF the workout is running , create a running object
+     * If the workout is cyucling then create a cycling object
+     *Add the new object to the workout array
+     *Render workout on the list
+     * Render marker on the map
+     * Clear the form feild + Hide the form
+     */
+    const distance = +formDistance.value;
+    const duration = +formDuration.value;
+    const Type = workoutType.value;
+    const { lat, lng } = this.#mapEvent.latlng; //coords
+    let workout; //for each single workout object
+
+    const valid = (...inputs) => inputs.every((input) => Number(input) > 0);
+
+    if (Type === "Running") {
+      const cadenceValue = +formCadence.value;
+
+      if (!valid(distance, duration, cadenceValue)) {
+        return alert("Invalid Inputs!!! Please Enter Valid Inputs");
+      }
+      workout = new Running([lat, lng], distance, duration, cadenceValue);
+    }
+
+    if (Type === "Cycling") {
+      const elvationGain = +formElve.value;
+      if (!valid(distance, duration, elvationGain)) {
+        return alert("Invalid Inputs!!! Please Enter Valid Inputs");
+      }
+
+      workout = new Cycling([lat, lng], distance, duration, elvationGain);
+    }
+    //Renderint the workout object into an array
+
+    this.#AllWorkouts.push(workout);
+    console.log(this.#AllWorkouts);
+
     e.preventDefault();
 
     sidebar.style.removeProperty("opacity");
     form.classList.toggle("hidden");
 
-    const { lat, lng } = this.#mapEvent.latlng;
     L.marker([lat, lng])
       .addTo(this.#map)
       .bindPopup(
