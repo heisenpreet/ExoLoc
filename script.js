@@ -307,6 +307,11 @@ class App {
       this._renderWorkoutList(eachWorkout);
     });
   }
+
+  reset() {
+    localStorage.removeItem("workout");
+    location.reload();
+  }
 }
 
 const app = new App();
