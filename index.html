@@ -43,15 +43,11 @@
         alt="logo"
         class="sidebar__logo"
       />
-      <section class="workout__list hidden">
-        <ul class="list">
-          <li class="list__item">
-            <h1>here ia m the list</h1>
-          </li>
-        </ul>
+      <section class="workout">
+        <ul class="workout__list"></ul>
       </section>
 
-      <section class="workout__form hidden">
+      <section class="workout__form transform">
         <form class="form">
           <div class="form__row">
             <label class="form__label" for="name">WorkOut</label>
@@ -98,7 +94,12 @@
           </div>
           <div class="form__row">
             <label class="form__label" for="label">Label</label>
-            <input type="text" id="label" class="form-input form__label" />
+            <input
+              type="text"
+              id="label"
+              class="form-input label"
+              placeholder="Optional"
+            />
           </div>
 
           <button class="form__button">Submit</button>

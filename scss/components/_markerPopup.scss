@@ -14,9 +14,9 @@
   background-color: var(--color-dark--1);
 }
 
-.running-popup .leaflet-popup-content-wrapper {
-  border-left: 5px solid var(--color-brand--2);
+.Running-popup .leaflet-popup-content-wrapper {
+  border-left: 5px solid blue;
 }
-.cycling-popup .leaflet-popup-content-wrapper {
-  border-left: 5px solid var(--color-brand--1);
+.Cycling-popup .leaflet-popup-content-wrapper {
+  border-left: 5px solid red;
 }

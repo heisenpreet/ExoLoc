@@ -2,9 +2,10 @@
   grid-row: 2/20;
   grid-column: 2/8;
   background-color: var(--color-dark--2);
-  opacity: 60%;
-  transition: opacity 1s;
+  opacity: 70%;
+  transition: opacity 800ms;
   transition-timing-function: ease;
+
   &:hover {
     opacity: 95%;
   }
