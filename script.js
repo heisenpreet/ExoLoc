@@ -12,7 +12,7 @@ const formLabel = document.querySelector(".label");
 const workoutType = document.querySelector(".form__select");
 const workoutList = document.querySelector(".workout");
 const workoutListItem = document.querySelector(".workout__list");
-
+const resetAllWorkouts = document.querySelector(".resetAllWorkouts");
 //classes for data
 class WorkOut {
   date = new Date();
@@ -76,6 +76,38 @@ class App {
     workoutType.addEventListener("change", this._toogleElevationFields);
 
     workoutList.addEventListener("click", this._movetoPopup.bind(this));
+
+    resetAllWorkouts.addEventListener("click", this.reset.bind(this));
+
+    ////
+    const thisoneworkout = document.querySelectorAll(".deleteThisWorkouts");
+
+    workoutListItem.addEventListener("mouseover", function (e) {
+      const item = e.target.closest(".workout__list-item");
+
+      if (!item) return;
+
+      thisoneworkout.forEach((wk) => {
+        if (item.dataset.id === wk.dataset.id) {
+          wk.classList.add("opac");
+        }
+      });
+    });
+    workoutListItem.addEventListener("mouseout", function (e) {
+      const item = e.target.closest(".workout__list-item");
+
+      if (!item) return;
+
+      thisoneworkout.forEach((wk) => {
+        if (item.dataset.id === wk.dataset.id) {
+          wk.classList.remove("opac");
+        }
+      });
+    });
+
+    thisoneworkout.forEach((icon) => {
+      icon.addEventListener("click", this._deletedworkout.bind(this));
+    });
   }
 
   _getPosition() {
@@ -275,6 +307,11 @@ class App {
           }</span>
         </p>
       </div>
+      <div class="deleteThisWorkouts" data-id="${workout.id}">
+        <i class="lar la-trash-alt deleteThisWorkouts__icon" data-id="${
+          workout.id
+        }"></i>
+      </div>
     </li>`;
     workoutListItem.insertAdjacentHTML("afterbegin", html);
   }
@@ -295,6 +332,7 @@ class App {
 
   _setlocalStorage() {
     localStorage.setItem("workout", JSON.stringify(this.#AllWorkouts));
+    location.reload();
   }
   _getlocalStorage() {
     const localStorageData = JSON.parse(localStorage.getItem("workout"));
@@ -311,6 +349,16 @@ class App {
   reset() {
     localStorage.removeItem("workout");
     location.reload();
+  }
+
+  _deletedworkout(e) {
+    this.#AllWorkouts.forEach((workout, key) => {
+      if (workout.id === e.target.dataset.id) {
+        this.#AllWorkouts.splice(key, 1);
+        this._setlocalStorage();
+      }
+    });
+    console.log(this.#AllWorkouts);
   }
 }
 

@@ -5,7 +5,7 @@
   opacity: 70%;
   transition: opacity 800ms;
   transition-timing-function: ease;
-
+  position: relative;
   &:hover {
     opacity: 95%;
   }
@@ -25,5 +25,23 @@
     margin-bottom: auto;
     padding: 1rem;
     opacity: 100%;
+  }
+}
+.resetAllWorkouts {
+  position: absolute;
+  top: 15%;
+  right: 5%;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+
+  &__icon {
+    font-size: 3rem;
+    color: var(--color-brand--2);
+    transition: color 800ms, scale 300ms;
+    transition-timing-function: ease;
+  }
+  :hover {
+    color: var(--color-brand--1);
+    transform: scale(1.03);
   }
 }

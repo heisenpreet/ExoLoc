@@ -19,6 +19,7 @@
       padding: 1rem 2rem;
       border-radius: 1.5rem;
       background-color: var(--color-dark--1);
+      position: relative;
     }
   }
 
@@ -53,4 +54,30 @@
   &__icon {
     font-size: 2rem;
   }
+}
+.deleteThisWorkouts {
+  position: absolute;
+  top: 25%;
+  right: 0%;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+  transition: opacity 500ms;
+  transition-timing-function: ease;
+  opacity: 0;
+  background-color: transparent;
+
+  &__icon {
+    font-size: 2.5rem;
+    color: var(--color-brand--2);
+    transition: color 800ms, scale 300ms;
+    transition-timing-function: ease;
+    background-color: transparent;
+  }
+  :hover {
+    color: var(--color-brand--1);
+    transform: scale(1.03);
+  }
+}
+.opac {
+  opacity: 100%;
 }
